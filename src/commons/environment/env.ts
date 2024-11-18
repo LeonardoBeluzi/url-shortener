@@ -26,4 +26,6 @@ export abstract class Env {
   public static readonly DATABASE_PASSWORD: string =
     process.env.DATABASE_PASSWORD;
   public static readonly DATABASE_NAME: string = process.env.DATABASE_NAME;
+
+  public static readonly JWT_SECRET: string = process.env.JWT_SECRET;
 }
