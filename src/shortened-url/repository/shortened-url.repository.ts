@@ -11,12 +11,18 @@ export class ShortenedUrlRepository implements IShortenedUrlRepository {
   ) {}
 
   async create(shortenedUrl: ShortenedUrl): Promise<ShortenedUrl> {
-    const shortenedUrlEntity = this.urlRepository.create(shortenedUrl);
+    const shortenedUrlEntity = this.urlRepository.create({
+      ...shortenedUrl,
+      user: { id: shortenedUrl.userId },
+    });
 
     const createdShortenedUrl =
       await this.urlRepository.save(shortenedUrlEntity);
 
-    return new ShortenedUrl(createdShortenedUrl);
+    return new ShortenedUrl({
+      ...createdShortenedUrl,
+      userId: createdShortenedUrl.user.id,
+    });
   }
 
   async findOneByUrl(url: string): Promise<ShortenedUrl | null> {

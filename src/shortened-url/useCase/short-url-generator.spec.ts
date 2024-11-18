@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { databaseConfigurationOptions } from '../../commons/database/database.config';
 import ShortUrlGenerator from '../useCase/short-url-generator';
 import ShortenedUrl from '../entities/shortened-url.entity';
+import { User } from '../../user/models/user.model';
 
 const SHORTENED_URL = new ShortenedUrl({
   longUrl: 'my-long-url',
@@ -19,7 +20,7 @@ describe('ShortUrlGenerator', () => {
     const app: TestingModule = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot({ ...databaseConfigurationOptions }),
-        TypeOrmModule.forFeature([Url]),
+        TypeOrmModule.forFeature([Url, User]),
       ],
       controllers: [],
       providers: [

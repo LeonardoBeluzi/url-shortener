@@ -7,9 +7,10 @@ import { Url } from './models/shortened-url.model';
 import { FindShortenedUrlController } from './controllers/find-shortened-url.controller';
 import { FindShortenedUrlService } from './services/find-shortened-url.service';
 import ShortUrlGenerator from './useCase/short-url-generator';
+import { User } from 'src/user/models/user.model';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Url])],
+  imports: [TypeOrmModule.forFeature([Url, User])],
   controllers: [CreateShortenedUrlController, FindShortenedUrlController],
   providers: [
     CreateShortenedUrlService,

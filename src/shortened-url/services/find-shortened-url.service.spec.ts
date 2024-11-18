@@ -6,6 +6,7 @@ import { databaseConfigurationOptions } from '../../commons/database/database.co
 import ShortenedUrl from '../entities/shortened-url.entity';
 import { FindShortenedUrlService } from './find-shortened-url.service';
 import { NotFoundException } from '@nestjs/common';
+import { User } from '../../user/models/user.model';
 
 const SHORTENED_URL = new ShortenedUrl({
   longUrl: 'my-long-url',
@@ -20,7 +21,7 @@ describe('FindShortenedUrlService', () => {
     const app: TestingModule = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot({ ...databaseConfigurationOptions }),
-        TypeOrmModule.forFeature([Url]),
+        TypeOrmModule.forFeature([Url, User]),
       ],
       controllers: [],
       providers: [
@@ -53,7 +54,7 @@ describe('FindShortenedUrlService', () => {
       expect(shortenedUrl.longUrl).toBe(SHORTENED_URL.longUrl);
       expect(shortenedUrl.shortUrl).toBeDefined();
       expect(shortenedUrl.hits).toBe(0);
-      expect(shortenedUrl.userId).toBeNull();
+      expect(shortenedUrl.userId).toBeUndefined();
       expect(shortenedUrl.createdAt).toBeDefined();
       expect(shortenedUrl.updatedAt).toBeDefined();
       expect(shortenedUrl.deleteAt).toBeUndefined();
