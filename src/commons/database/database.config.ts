@@ -33,14 +33,11 @@ const config: ITypeOrmConfig = {
   },
   production: {
     type: 'postgres',
-    host: Env.DATABASE_HOST,
-    port: Env.DATABASE_PORT,
-    username: Env.DATABASE_USERNAME,
-    password: Env.DATABASE_PASSWORD,
-    database: Env.DATABASE_NAME,
+    url: Env.DATABASE_URL,
     entities: [],
-    synchronize: true,
+    synchronize: false,
     autoLoadEntities: true,
+    ssl: true,
   },
 };
 
