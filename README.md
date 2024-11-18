@@ -46,3 +46,7 @@ $ pnpm start
 http://localhost:${APPLICATION_PORT}/${SWAGGER_PATH}
 ```
 
+## The API can be accessed on 
+```
+https://url-shortener-myb8.onrender.com/docs
+```
