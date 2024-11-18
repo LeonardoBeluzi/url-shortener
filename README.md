@@ -50,3 +50,8 @@ http://localhost:${APPLICATION_PORT}/${SWAGGER_PATH}
 ```
 https://url-shortener-myb8.onrender.com/docs
 ```
+
+## Onde melhorar?
+- A combinação de URLs pode se esgotar um dia dependendo da quantia criada, porém para isso é necessário ultrapassar 56.8 bilhões de combinações diferentes. Adicionando 1 ou 2 caracteres extras para a url curta seria possível aumentar essa combinação para mais de 3.5 trilhões de combinações.
+- Eu utilizaria o keycloak para gerenciar as autenticações de forma que ele ficaria em frente de todos os serviços e poderia gerenciar os tokens sem a necessidade de criar um modulo de autorização para cada serviço.
+- Para evitar o acesso recorrente ao banco de dados para localizar as URLs completas eu adicionaria uma camada de cache.
