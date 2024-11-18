@@ -11,12 +11,16 @@ export class CreateShortenedUrlService {
     private shortenedUrlRepository: IShortenedUrlRepository,
     private readonly shortUrlGenerator: ShortUrlGenerator,
   ) {}
-  async execute(input: CreateShortenedUrlDto): Promise<ShortenedUrl> {
+  async execute(
+    input: CreateShortenedUrlDto,
+    userId: number,
+  ): Promise<ShortenedUrl> {
     const newShortenedUrl = await this.shortUrlGenerator.execute();
 
     const shortenedUrl = new ShortenedUrl({
       ...input,
       shortUrl: newShortenedUrl.shortUrl,
+      userId,
     });
 
     const createdShortenedUrl =
