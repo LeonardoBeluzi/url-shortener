@@ -9,6 +9,7 @@ import { NotFoundException } from '@nestjs/common';
 import ShortenedUrl from '../entities/shortened-url.entity';
 import { Response } from 'express';
 import { mock, MockProxy } from 'jest-mock-extended';
+import { User } from '../../user/models/user.model';
 
 const SHORTENED_URL = new ShortenedUrl({
   longUrl: 'my-long-url',
@@ -24,7 +25,7 @@ describe('FindShortenedUrlController', () => {
     const app: TestingModule = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot({ ...databaseConfigurationOptions }),
-        TypeOrmModule.forFeature([Url]),
+        TypeOrmModule.forFeature([Url, User]),
       ],
       controllers: [FindShortenedUrlController],
       providers: [
