@@ -1,8 +1,10 @@
+import { User } from 'src/user/models/user.model';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
@@ -23,10 +25,8 @@ export class Url {
   @Column()
   hits: number;
 
-  @Column({
-    nullable: true,
-  })
-  userId?: number;
+  @ManyToOne(() => User, (user) => user.id)
+  user?: User;
 
   @CreateDateColumn()
   createdAt: Date;
