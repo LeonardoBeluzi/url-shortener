@@ -21,7 +21,7 @@ const config: ITypeOrmConfig = {
     autoLoadEntities: true,
   },
   development: {
-    type: 'mysql',
+    type: 'postgres',
     host: Env.DATABASE_HOST,
     port: Env.DATABASE_PORT,
     username: Env.DATABASE_USERNAME,
@@ -32,7 +32,7 @@ const config: ITypeOrmConfig = {
     autoLoadEntities: true,
   },
   production: {
-    type: 'mysql',
+    type: 'postgres',
     host: Env.DATABASE_HOST,
     port: Env.DATABASE_PORT,
     username: Env.DATABASE_USERNAME,
