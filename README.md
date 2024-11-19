@@ -13,7 +13,7 @@ $ pnpm install
 
 - APPLICATION_VERSION -> should be filled with the version
 
-- APPLICATION_HOST -> should be filled with the application IP
+- APPLICATION_HOST -> should be filled with the application IP and port if needed
 
 - SWAGGER_TITLE -> should be filled with the title that is going to be displayed by swagger
 
@@ -34,6 +34,12 @@ $ pnpm install
 - DATABASE_URL -> should be filled with the database Url
 
 - JWT_SECRET -> should be filled with jwt secret
+
+
+The "local" configuration is using SQLite, so you only have to provide the DATABASE_NAME
+The "test" configuration uses SQLite in memory, so it is not necessary to provide any DATABASE variable
+The "development" configuration uses PostgreSQL with a combination of DATABASE_HOST, DATABASE_PORT, DATABASE_USERNAME, DATABASE_PASSWORD and DATABASE_NAME
+The "production" configuration uses PostgreSQL with DATABASE_URL and SSL
 ```
 
 - Run the project with
